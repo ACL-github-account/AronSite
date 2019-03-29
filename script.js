@@ -1,9 +1,5 @@
-	import favbarimgs from "./favbarImgs.js";
-	/*its messy but it works; i could probebly change the code so it went though all images on
-	the page instead of within a specific div. I will probebly do this so i can use this code
-	on all pages*/
-	
 	//adds events
+	let pictures = document.getElementsByTagName("img");
 	for (let x = 0; x<pictures.length; x++){
 		pictures[x].addEventListener("click",
 			(e) => {
@@ -15,16 +11,13 @@
 			document.getElementById("mainimg").src = e.target.src;
 		},false)
 	}
-	
-	//self explanatory
-	
-	//messy code for the close button, could probebly have used an arrow function.
+		
+	//the close button.
 	if (document.getElementById("closebutton") != null) {
-		function close(){
+		document.getElementById("closebutton").addEventListener("click", () => {
 			document.getElementById("imgzoom").style.display="none";
 			document.getElementById("header").style.display="block";
-		}
-		document.getElementById("closebutton").addEventListener("click", close, false);
+		}, false);
 	}
 
 	//search function
