@@ -5,5 +5,5 @@ if (document.title == "Galary"){
     for (let x = 0; x<bodypictures.length; x++){
         let clones = bodypictures[x].cloneNode(true);
         favbar.appendChild(clones);
-        }
+    }
 }
