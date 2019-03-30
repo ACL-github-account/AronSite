@@ -2,18 +2,16 @@ var incompat = 0;
 try {
     document.cookie = "testcookie=0";
 }
-catch(eer) {
-    incompat = 1;
+catch(error) {
+    incompat = NaN;
 }
 if (document.cookie[0] == undefined){
-    alert("please note that Chrome does not support cookies for html files opened with the file manager. Use localhost if you intend to view this website in Chrome.")
-    incompat = 1;
+    incompat = NaN;
 }
 switch (incompat){
     case 0:
         //getting elements
         let options = document.getElementById("options");
-        let openmenu = document.getElementById("openmenu");
                     
         //function for opening and closeing menu
         function displayops(e) {
@@ -30,8 +28,6 @@ switch (incompat){
         function getCookie(cname){
             let name = cname + "=";
             let cooki = document.cookie;
-            console.log(cooki.indexOf(name));
-            console.log(cooki[cooki.indexOf(name) + name.length]);
             return(cooki[cooki.indexOf(name) + name.length]);
         }
                             
@@ -39,7 +35,7 @@ switch (incompat){
             let tar = document.getElementsByTagName("*");
             let except = document.getElementsByClassName("exception");
             for (let x = 0; x<tar.length; x++) {
-                document.getElementById("body").style.backgroundImage="url(backgroundAlt.jpg)";
+                document.getElementById("body").style.backgroundImage="url(Images/backgroundAlt.jpg)";
                 tar[x].style.backgroundColor="#FFFFFF";
                 if (except[0] != null){
                     except[0].style.color = "#000000";
@@ -80,12 +76,9 @@ switch (incompat){
         break;
         
     default:
-        alert("Web storeage is either turned off or your browser does not support it");
-        openmenu = document.getElementById("openmenu");	
-        function errormsg(){
-            alert("FUNCTION UNAVILABLE: OPEN IN DIFFERENT BROWSER, ENABLE WEBSTORAGE AND OR COOKIES!")
-        }
+    //not put outside switch as it would become global
+        let openmenu = document.getElementById("openmenu");
         openmenu.value = "OPTIONS UNAVAILABLE";
-        openmenu.addEventListener("click", errormsg, false);
+        openmenu.addEventListener("click", ()=>{alert("FUNCTION UNAVILABLE: OPEN IN DIFFERENT BROWSER, ENABLE WEBSTORAGE AND OR COOKIES!")}, false);
     break;
 }
