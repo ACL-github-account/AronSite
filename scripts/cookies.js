@@ -1,4 +1,5 @@
-var incompat = 0;
+let incompat = 0;
+let openmenu = document.getElementById("openmenu");
 try {
     document.cookie = "testcookie=0";
 }
@@ -11,17 +12,7 @@ if (document.cookie[0] == undefined){
 switch (incompat){
     case 0:
         //getting elements
-        let options = document.getElementById("options");
-                    
-        //function for opening and closeing menu
-        function displayops(e) {
-            if (options.style.visibility == "visible"){
-                options.style.visibility = "hidden";
-            }
-            else {
-                options.style.visibility = "visible";
-                }
-            }
+        let options = document.getElementById("options");                   
 
         console.log(document.cookie);
 
@@ -70,14 +61,20 @@ switch (incompat){
         }
         
         //adding event listeners (done last so functions and variables are declared first to prevent issues with spider-monkey)
-        openmenu.addEventListener("click", displayops, false);
+        openmenu.addEventListener("click", ()=>{
+		//function for opening and closeing menu
+            if (options.style.visibility == "visible"){
+                options.style.visibility = "hidden";
+            }
+            else {
+                options.style.visibility = "visible";
+            }
+            }, false);
         document.getElementById("hightcontrast").addEventListener("click", highcontrastoption, false);
         document.getElementById("comicsans").addEventListener("click", csansoption, false);
         break;
         
     default:
-    //not put outside switch as it would become global
-        let openmenu = document.getElementById("openmenu");
         openmenu.value = "OPTIONS UNAVAILABLE";
         openmenu.addEventListener("click", ()=>{alert("FUNCTION UNAVILABLE: OPEN IN DIFFERENT BROWSER, ENABLE WEBSTORAGE AND OR COOKIES!")}, false);
     break;
