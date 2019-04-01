@@ -1,2 +1,2 @@
 # AronSite
-A website about ME
+A website about me. (not the best topic but it met the assignment criteria)
