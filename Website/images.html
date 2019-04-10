@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Galary</title>
+<link href="./CSS/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body id="body">
+	<br id="thspace">
+	<div id="header">
+		<ul id="nav">
+          <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="updates.html">Updates and Announcements</a></li>
+            <li><a class="exception" href="index.html"><b>HOME</b></a></li>
+            <li><a href="videos.html"> Videos</a></li>
+        </ul>
+	</div>
+		<!--image-inspect-->
+		<div id="imgzoom">
+			<input id="closebutton" type="button" value="X"/>
+			<div class="imgcontainer">
+				<img id="mainimg" src="Images/placeholder.jpg"/>
+			</div>
+		</div>
+	<div id="viewoptions">
+		<input id="openmenu" type="button" value="open options">
+		<div id="options">
+			<input id="hightcontrast" type="button" value="High Contrast">
+			<input id="comicsans" type="button" value="Comic Sans">
+		</div>
+	</div>
+    </br>
+    <div id="title">
+		<h1>
+			Images: favorites and all
+			<div id="searchcont">
+				<input type="text" placeholder="type here" class="searchbar">
+				<input type="button" value="search" id="searchbutton">
+			</div>
+		</h1>
+    </div>  
+    </br> 
+	<div class="favbarparent">
+		<h2><u>Quick Access</u></h2>
+		<div class="favbar">
+		</div>
+	</div>  			
+	<div id="content" class="imgs">		
+		<img src="Images/placeholder2.jpg"/>
+		<img src="Images/dog.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/placeholder.jpg"/>
+		<img src="Images/dog.jpg"/>
+	</div>
+	<script src="./scripts/favbarImgs.js"></script>
+	<script src="./scripts/cookies.js"></script>
+	<script src="./scripts/favbarImgs.js"></script>
+	<script src="./scripts/imgZoom.js"></script>
+	<script src="./scripts/Search.js"></script>
+</body>
+</html>
