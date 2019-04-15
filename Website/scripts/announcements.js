@@ -1,7 +1,6 @@
 let xmlreq = new XMLHttpRequest();
 
 
-
 xmlreq.open("GET", "/api/announcements.json");
 xmlreq.setRequestHeader("Content-Type", "json");
 xmlreq.responseType = "text";
@@ -26,6 +25,15 @@ xmlreq.onreadystatechange = ()=>{
         console.log(xmlreq.readyState);
 }}
 
+let xmlpostreq = new XMLHttpRequest();
+
+let jsobj = {
+    "werd" : "testing"
+}
+xmlpostreq.open("POST", "/");
+xmlpostreq.setRequestHeader("Content-Type", "json");
+xmlpostreq.responseType = "text";
+xmlpostreq.send(JSON.stringify(jsobj));
 
 
 

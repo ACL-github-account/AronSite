@@ -1,6 +1,7 @@
 var http = require("http");
 var fs = require("fs");
 var url = require("url");
+var qs = require("querystring");
 
 var MimeTypes = {
 	"html" : "text/html",
@@ -19,27 +20,39 @@ http.createServer(function(req, res){
 		console.log(fileExtention[1]);
 		console.log(String(MimeTypes[fileExtention[1]]));
 		console.log("-------------");
-	let routeing;
 
-	if (p.pathname === "/"){
-		routeing = "." + "/website/index.html";
-	}else if(p.pathname === "/api"){
-		routeing = "./website/api/announcements.json";
-	} else {
-		routeing = "." + "/website" + p.pathname;
-	}
-    fs.readFile(routeing, function(err, data){
-		if (err){
-			res.writeHead(200, {"Content-Type":"text/html"});
-			res.write("ERR 404");
-		} else {
-			res.writeHead(200, {"Content-Type": String(MimeTypes[fileExtention[1]])});
-				if (String(MimeTypes[fileExtention[1]]) != "application/json"){
-					res.write(data);
-				} else {
-					res.write(JSON.stringify(data));
-				}
+		if (req.method === "GET") {
+			let routeing;
+			if (p.pathname === "/"){
+				routeing = "." + "/website/index.html";
+			}else if(p.pathname === "/api"){
+				routeing = "./website/api/announcements.json";
+			} else {
+				routeing = "." + "/website" + p.pathname;
 			}
-		res.end();
+				fs.readFile(routeing, function(err, data){
+				if (err){
+					res.writeHead(200, {"Content-Type":"text/html"});
+					res.write("ERR 404");
+				} else {
+					res.writeHead(200, {"Content-Type": String(MimeTypes[fileExtention[1]])});
+						if (String(MimeTypes[fileExtention[1]]) != "application/json"){
+							res.write(data);
+						} else {
+							res.write(JSON.stringify(data));
+						}
+					}
+				res.end();
 		});
+		}
+
+		if (req.method === "POST"){
+			let body;
+			req.on("data", (chunk)=> {
+				body = (body == null) ? chunk.toString() : body + chunk.toString() ;
+			})
+			req.on("end",()=>{
+				console.log(body);
+			})
+		}
 	}).listen(3000, "127.0.0.1")
