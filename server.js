@@ -24,22 +24,25 @@ http.createServer(function(req, res){
 		if (req.method === "GET") {
 			let routeing;
 			if (p.pathname === "/"){
-				routeing = "." + "/website/index.html";
+				routeing = __dirname + "/website/index.html";
 			}else if(p.pathname === "/api"){
-				routeing = "./website/api/announcements.json";
+				routeing = __dirname + "/website/api/announcements.json";
 			} else {
-				routeing = "." + "/website" + p.pathname;
+				routeing = __dirname + "/website" + p.pathname;
 			}
 				fs.readFile(routeing, function(err, data){
 				if (err){
 					res.writeHead(200, {"Content-Type":"text/html"});
-					res.write("ERR 404");
+					res.write("error" );
+					res.write(req.url)
+					console.log(err)
+					console.log(__dirname);
 				} else {
 					res.writeHead(200, {"Content-Type": String(MimeTypes[fileExtention[1]])});
 						if (String(MimeTypes[fileExtention[1]]) != "application/json"){
 							res.write(data);
 						} else {
-							res.write(JSON.stringify(data));
+							res.write(data);
 						}
 					}
 				res.end();
