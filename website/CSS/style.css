@@ -301,6 +301,23 @@ a {
 	visibility: hidden;
 }
 
+/*Posting*/
+#postingWindow {
+	display: none;
+	position: fixed;
+	margin-left: 35vw;
+	background-color: white;
+	border-style:solid;
+	width: 30vw;
+}
+
+#postingWindow * {
+	width: 100%;
+}
+
+#postbody {
+	height: 300%;
+}
 
 
 

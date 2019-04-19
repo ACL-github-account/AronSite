@@ -19,7 +19,15 @@
 		<div id="options">
 			<input id="hightcontrast" type="button" value="High Contrast">
 			<input id="comicsans" type="button" value="Comic Sans">
+			<input style="color: red" id="post" type="button" value="post">
 		</div>
+	</div>
+	<div id="postingWindow">
+		<input type="text" id="posttitle" placeholder="Title">
+		<br>
+		<input type="text" id="postbody" placeholder="Text Here">
+		<br>
+		<input type="button" id="postannounce" value="post announcement" onclick="password()">
 	</div>
     <div id="title">
 		<h1>
@@ -38,5 +46,6 @@
 	</div>
 	<script src="./scripts/cookies.js"></script>
 	<script src="./scripts/announcements.js"></script>
+	<script src="./scripts/posting.js"></script>
 </body>
 </html>
