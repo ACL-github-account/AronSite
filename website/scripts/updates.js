@@ -17,8 +17,8 @@ xmlreq2.onreadystatechange = ()=>{
         jan.title.forEach(()=>{
             ans.innerHTML = ans.innerHTML + 
             "<div class='update'>" +
-            "<h1>" + jan.title[index] + "</h1>" + 
-            "<p>" + jan.content[index] + "</p>" + 
+            "<h1>" + jan.title[jan.title.length - index - 1] + "</h1>" + 
+            "<p>" + jan.content[jan.content.length - index - 1] + "</p>" + 
             "</div>";
             index++;
         })

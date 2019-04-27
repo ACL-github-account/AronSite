@@ -16,24 +16,14 @@ xmlreq.onreadystatechange = ()=>{
         jan.title.forEach(()=>{
             ans.innerHTML = ans.innerHTML + 
             "<div class='announcement'>" +
-            "<h1>" + jan.title[index] + "</h1>" + 
-            "<p>" + jan.content[index] + "</p>" + 
+            "<h1>" + jan.title[jan.title.length - index - 1] + "</h1>" + 
+            "<p>" + jan.content[jan.content.length - index - 1] + "</p>" + 
             "</div>";
             index++;
         })
         console.log(xmlreq.responseText);
         console.log(xmlreq.readyState);
 }}
-
-let xmlpostreq = new XMLHttpRequest();
-
-let jsobj = {
-    "werd" : "testing"
-}
-xmlpostreq.open("POST", "/");
-xmlpostreq.setRequestHeader("Content-Type", "json");
-xmlpostreq.responseType = "text";
-xmlpostreq.send(JSON.stringify(jsobj));
 
 
 

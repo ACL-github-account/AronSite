@@ -8,15 +8,16 @@ document.getElementById("post").addEventListener("click", ()=>{
 });
 
 //POST's password to server for verification
-function password(){
+function password(postType){
     let pass = prompt("Password:");
     let passParse = new XMLHttpRequest;
     let postObj = {
         "password" : pass,
+        "type" : postType,
         "Title" : document.getElementById("posttitle").value,
         "Body" : document.getElementById("postbody").value,
-
     }
+    console.log(JSON.stringify(postObj));
     passParse.open("POST", "/password");
     passParse.setRequestHeader("Content-Type", "json");
     passParse.responseType = "text";
@@ -26,6 +27,7 @@ function password(){
         if (passParse.readyState === 4 && passParse.status === 200){
             if (passParse.responseText === "yes"){
                alert("Password correct");
+               location.reload();
             }
         }
     }
